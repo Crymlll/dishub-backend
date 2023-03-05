@@ -5,7 +5,7 @@ import {
 	createPegawai,
 	updatePegawai,
 	deletePegawai,
-} from "../controllers/PegawaiController.js"
+} from "../controllers/IdentitasPegawaiController.js"
 
 const router = express.Router()
 
