@@ -1,7 +1,8 @@
-import Pegawai from "../models/IdentitasPegawaiModel.js"
-import { allowedType, maxFileSize } from "../config/Form.js"
+import Pegawai from "../../models/Pegawai/PegawaiModel.js"
+import { allowedType, maxFileSize } from "../../config/Form.js"
 import path from "path"
 import fs from "fs"
+import { time } from "console"
 
 export const getPegawai = async (req, res) => {
 	try {
@@ -53,8 +54,9 @@ export const createPegawai = async (req, res) => {
 	let url_pns = `${req.protocol}://${req.get("host")}/template/file.png`
 
 	if (file_cpns != null) {
+		const timestamp = new Date().getTime()
 		ext_cpns = path.extname(file_cpns.name)
-		fileName_cpns = file_cpns.md5 + ext_cpns
+		fileName_cpns = file_cpns.md5 + timestamp + ext_cpns
 		url_cpns = `${req.protocol}://${req.get("host")}/files/${fileName_cpns}`
 
 		file_cpns.mv(`./public/files/${fileName_cpns}`, async (err) => {
@@ -63,8 +65,9 @@ export const createPegawai = async (req, res) => {
 	}
 
 	if (file_spmt != null) {
+		const timestamp = new Date().getTime()
 		ext_spmt = path.extname(file_spmt.name)
-		fileName_spmt = file_spmt.md5 + ext_spmt
+		fileName_spmt = file_spmt.md5 + timestamp + ext_spmt
 		url_spmt = `${req.protocol}://${req.get("host")}/files/${fileName_spmt}`
 
 		file_spmt.mv(`./public/files/${fileName_spmt}`, async (err) => {
@@ -73,9 +76,10 @@ export const createPegawai = async (req, res) => {
 	}
 
 	if (file_sttp_prajabatan != null) {
+		const timestamp = new Date().getTime()
 		ext_sttp_prajabatan = path.extname(file_sttp_prajabatan.name)
 		fileName_sttp_prajabatan =
-			file_sttp_prajabatan.md5 + ext_sttp_prajabatan
+			file_sttp_prajabatan.md5 + timestamp + ext_sttp_prajabatan
 		url_sttp_prajabatan = `${req.protocol}://${req.get(
 			"host"
 		)}/files/${fileName_sttp_prajabatan}`
@@ -90,8 +94,9 @@ export const createPegawai = async (req, res) => {
 	}
 
 	if (file_pns != null) {
+		const timestamp = new Date().getTime()
 		ext_pns = path.extname(file_pns.name)
-		fileName_pns = file_pns.md5 + ext_pns
+		fileName_pns = file_pns.md5 + timestamp + ext_pns
 		url_pns = `${req.protocol}://${req.get("host")}/files/${fileName_pns}`
 
 		file_pns.mv(`./public/files/${fileName_pns}`, async (err) => {
@@ -136,6 +141,13 @@ export const createPegawai = async (req, res) => {
 				url_sttp_prajabatan ||
 				"http://localhost:5000/template/file.png",
 			url_file_pns: url_pns || "http://localhost:5000/template/file.png",
+
+			pangkat: data.pangkat,
+			golongan: data.golongan,
+			jenis_jabatan: data.jenis_jabatan,
+			bidang: data.bidang,
+			nama_jabatan: data.nama_jabatan,
+			eselon: data.eselon,
 		})
 		res.status(201).json({
 			message: "Pegawai created",
@@ -180,47 +192,105 @@ export const updatePegawai = async (req, res) => {
 			fileName_cpns = pegawai.file_cpns
 			url_cpns = pegawai.url_file_cpns
 		} else {
+			// const filepath_cpns = `./public/files/${fileName_cpns}`
+			// fs.unlinkSync(filepath_cpns)
+
+			const timestamp = new Date().getTime()
 			ext_cpns = path.extname(req.files.file_cpns.name)
-			fileName_cpns = req.files.file_cpns.md5 + ext_cpns
+			fileName_cpns = req.files.file_cpns.md5 + timestamp + ext_cpns
 			url_cpns = `${req.protocol}://${req.get(
 				"host"
 			)}/files/${fileName_cpns}`
+
+			req.files.file_cpns.mv(
+				`./public/files/${fileName_cpns}`,
+				async (err) => {
+					if (err)
+						return await res
+							.status(500)
+							.json({ message: err.message })
+				}
+			)
 		}
 
 		if (req.files.file_spmt == null) {
 			fileName_spmt = pegawai.file_spmt
 			url_spmt = pegawai.url_file_spmt
 		} else {
+			// const filepath_spmt = `./public/files/${fileName_spmt}`
+			// fs.unlink(filepath_spmt)
+
+			const timestamp = new Date().getTime()
 			ext_spmt = path.extname(req.files.file_spmt.name)
-			fileName_spmt = req.files.file_spmt.md5 + ext_spmt
+			fileName_spmt = req.files.file_spmt.md5 + timestamp + ext_spmt
 			url_spmt = `${req.protocol}://${req.get(
 				"host"
 			)}/files/${fileName_spmt}`
+
+			req.files.file_spmt.mv(
+				`./public/files/${fileName_spmt}`,
+				async (err) => {
+					if (err)
+						return await res
+							.status(500)
+							.json({ message: err.message })
+				}
+			)
 		}
 
 		if (req.files.file_sttp_prajabatan == null) {
 			fileName_sttp_prajabatan = pegawai.file_sttp_prajabatan
 			url_sttp_prajabatan = pegawai.url_file_sttp_prajabatan
 		} else {
+			// const filepath_sttp_prajabatan = `./public/files/${pegawai.fileName_sttp_prajabatan}`
+			// fs.unlinkSync(filepath_sttp_prajabatan)
+
+			const timestamp = new Date().getTime()
 			ext_sttp_prajabatan = path.extname(
 				req.files.file_sttp_prajabatan.name
 			)
 			fileName_sttp_prajabatan =
-				req.files.file_sttp_prajabatan.md5 + ext_sttp_prajabatan
+				req.files.file_sttp_prajabatan.md5 +
+				timestamp +
+				ext_sttp_prajabatan
 			url_sttp_prajabatan = `${req.protocol}://${req.get(
 				"host"
 			)}/files/${fileName_sttp_prajabatan}`
+
+			req.files.file_sttp_prajabatan.mv(
+				`./public/files/${fileName_sttp_prajabatan}`,
+				async (err) => {
+					if (err)
+						return await res
+							.status(500)
+							.json({ message: err.message })
+				}
+			)
 		}
 
 		if (req.files.file_pns == null) {
 			fileName_pns = pegawai.file_pns
 			url_pns = pegawai.url_file_pns
 		} else {
+			// const filepath_file_pns = `./public/files/${pegawai.fileName_pns}`
+			// fs.unlinkSync(filepath_file_pns)
+
+			const timestamp = new Date().getTime()
 			ext_pns = path.extname(req.files.file_pns.name)
-			fileName_pns = req.files.file_pns.md5 + ext_pns
+			fileName_pns = req.files.file_pns.md5 + timestamp + ext_pns
 			url_pns = `${req.protocol}://${req.get(
 				"host"
 			)}/files/${fileName_pns}`
+
+			req.files.file_pns.mv(
+				`./public/files/${fileName_pns}`,
+				async (err) => {
+					if (err)
+						return await res
+							.status(500)
+							.json({ message: err.message })
+				}
+			)
 		}
 	}
 
@@ -256,6 +326,13 @@ export const updatePegawai = async (req, res) => {
 				url_file_spmt: url_spmt,
 				url_file_sttp_prajabatan: url_sttp_prajabatan,
 				url_file_pns: url_pns,
+
+				pangkat: data.pangkat,
+				golongan: data.golongan,
+				jenis_jabatan: data.jenis_jabatan,
+				bidang: data.bidang,
+				nama_jabatan: data.nama_jabatan,
+				eselon: data.eselon,
 			},
 			{
 				where: {
@@ -263,12 +340,12 @@ export const updatePegawai = async (req, res) => {
 				},
 			}
 		)
-		res.status(200).json({
+		res.status(201).json({
 			message: "Pegawai updated",
 		})
 	} catch (error) {
 		console.log(error.message)
-		return res.status(500).json({ message: "Internal server error" })
+		return res.status(400).json({ message: "Internal server error" })
 	}
 }
 

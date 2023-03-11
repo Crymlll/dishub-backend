@@ -1,12 +1,12 @@
 import { Sequelize } from "sequelize"
-import db from "../config/Database.js"
+import db from "../../config/Database.js"
 
 const { DataTypes } = Sequelize
 
-const PosisiPegawai = db.define(
-	"posisi_pegawai",
+export const IjazahPegawai = db.define(
+	"ijazah_pegawai",
 	{
-		id_posisi_pegawai: {
+		id_ijazah: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
@@ -14,22 +14,23 @@ const PosisiPegawai = db.define(
 		id_pegawai: {
 			type: DataTypes.INTEGER,
 		},
-		pangkat: {
+		tingkat_ijazah: {
 			type: DataTypes.STRING,
 		},
-		golongan: {
+		bidang_ijazah: {
 			type: DataTypes.STRING,
 		},
-		jenis_jabatan: {
+		no_sk_ijazah: {
 			type: DataTypes.STRING,
 		},
-		bidang: {
+		tgl_sk_ijazah: {
+			type: DataTypes.DATE,
+		},
+
+		file_ijazah: {
 			type: DataTypes.STRING,
 		},
-		nama_jabatan: {
-			type: DataTypes.STRING,
-		},
-		eselon: {
+		url_file_ijazah: {
 			type: DataTypes.STRING,
 		},
 	},
@@ -37,8 +38,3 @@ const PosisiPegawai = db.define(
 		freezeTableName: true,
 	}
 )
-
-export default PosisiPegawai
-;async () => {
-	await db.sync()
-}

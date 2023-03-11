@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize"
-import db from "../config/Database.js"
+import db from "../../config/Database.js"
 
 const { DataTypes } = Sequelize
 
@@ -80,6 +80,26 @@ const Pegawai = db.define(
 			type: DataTypes.STRING,
 		},
 		url_file_pns: {
+			type: DataTypes.STRING,
+		},
+
+		//JABATAN
+		pangkat: {
+			type: DataTypes.STRING,
+		},
+		golongan: {
+			type: DataTypes.STRING,
+		},
+		jenis_jabatan: {
+			type: DataTypes.STRING,
+		},
+		bidang: {
+			type: DataTypes.STRING,
+		},
+		nama_jabatan: {
+			type: DataTypes.STRING,
+		},
+		eselon: {
 			type: DataTypes.STRING,
 		},
 	},

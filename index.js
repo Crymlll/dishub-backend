@@ -4,7 +4,8 @@ import cors from "cors"
 import * as dotenv from "dotenv"
 dotenv.config()
 
-import IdentitasPegawaiRoute from "./routes/IdentitasPegawaiRoute.js"
+import PegawaiRoute from "./routes/PegawaiRoute.js"
+import IjazahPegawaiRoute from "./routes/IjazahPegawaiRoute.js"
 import LogRequest from "./middleware/logs.js"
 import Config from "./config/Config.js"
 
@@ -16,7 +17,8 @@ app.use(cors())
 app.use(express.json())
 app.use(fileUpload())
 app.use(express.static("public"))
-app.use(IdentitasPegawaiRoute)
+app.use(PegawaiRoute)
+app.use(IjazahPegawaiRoute)
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`)
