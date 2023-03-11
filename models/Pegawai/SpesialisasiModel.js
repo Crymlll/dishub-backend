@@ -3,10 +3,10 @@ import db from "../../config/Database.js"
 
 const { DataTypes } = Sequelize
 
-const SpesialisasiPegawai = db.define(
+export const SpesialisasiPegawai = db.define(
 	"spesialisasi_pegawai",
 	{
-		id_spesialisasi_pegawai: {
+		id_spesialisasi: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
@@ -15,22 +15,24 @@ const SpesialisasiPegawai = db.define(
 			type: DataTypes.INTEGER,
 		},
 
-		bidang_pesialisasi: {
+		bidang_spesialisasi: {
 			type: DataTypes.STRING,
 		},
-		no_sk_pesialisasi: {
+		no_sk_spesialisasi: {
 			type: DataTypes.STRING,
 		},
-		tgl_sk_pesialisasi: {
+		tgl_sk_spesialisasi: {
 			type: DataTypes.DATE,
+		},
+
+		file_spesialisasi: {
+			type: DataTypes.STRING,
+		},
+		url_file_spesialisasi: {
+			type: DataTypes.STRING,
 		},
 	},
 	{
 		freezeTableName: true,
 	}
 )
-
-export default SpesialisasiPegawai
-;async () => {
-	await db.sync()
-}

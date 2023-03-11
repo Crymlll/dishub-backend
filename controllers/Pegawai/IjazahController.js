@@ -46,15 +46,16 @@ export const getIjazahPegawaiByPegawaiId = async (req, res) => {
 export const createIjazahPegawai = async (req, res) => {
 	const data = req.body
 
-	const file_ijazah = req.files.file_ijazah
+	let file_ijazah = ""
 
 	let ext_ijazah = ""
 
-	let fileName_ijazah = ""
+	let fileName_ijazah = "file.png"
 
 	let url_ijazah = `${req.protocol}://${req.get("host")}/template/file.png`
 
-	if (file_ijazah != null) {
+	if (req.files != null) {
+		file_ijazah = req.files.file_ijazah
 		const timestamp = new Date().getTime()
 		ext_ijazah = path.extname(file_ijazah.name)
 		fileName_ijazah = file_ijazah.md5 + timestamp + ext_ijazah
@@ -93,7 +94,7 @@ export const updateIjazahPegawai = async (req, res) => {
 	})
 
 	if (!ijazah) {
-		res.status(404).json({ message: "Ijazah Pegawai Not Found" })
+		return res.status(404).json({ message: "Ijazah Pegawai Not Found" })
 	}
 
 	const data = req.body
@@ -111,6 +112,14 @@ export const updateIjazahPegawai = async (req, res) => {
 		url_ijazah = `${req.protocol}://${req.get(
 			"host"
 		)}/files/${fileName_ijazah}`
+
+		req.files.file_ijazah.mv(
+			`./public/files/${fileName_ijazah}`,
+			async (err) => {
+				if (err)
+					return await res.status(500).json({ message: err.message })
+			}
+		)
 	}
 
 	try {
@@ -148,7 +157,7 @@ export const deleteIjazahPegawai = async (req, res) => {
 		return
 	}
 	try {
-		const filepath_ijazah = `./public/files/${ijazah.url_file_ijazah}`
+		const filepath_ijazah = `./public/files/${ijazah.file_ijazah}`
 
 		if (fs.existsSync(filepath_ijazah)) {
 			fs.unlinkSync(filepath_ijazah)

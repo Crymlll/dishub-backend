@@ -31,10 +31,10 @@ export const getPegawaiById = async (req, res) => {
 export const createPegawai = async (req, res) => {
 	const data = req.body
 
-	const file_cpns = req.files.file_cpns
-	const file_spmt = req.files.file_spmt
-	const file_sttp_prajabatan = req.files.file_sttp_prajabatan
-	const file_pns = req.files.file_pns
+	let file_cpns = ""
+	let file_spmt = ""
+	let file_sttp_prajabatan = ""
+	let file_pns = ""
 
 	let ext_cpns = ""
 	let ext_spmt = ""
@@ -53,55 +53,72 @@ export const createPegawai = async (req, res) => {
 	)}/template/file.png`
 	let url_pns = `${req.protocol}://${req.get("host")}/template/file.png`
 
-	if (file_cpns != null) {
-		const timestamp = new Date().getTime()
-		ext_cpns = path.extname(file_cpns.name)
-		fileName_cpns = file_cpns.md5 + timestamp + ext_cpns
-		url_cpns = `${req.protocol}://${req.get("host")}/files/${fileName_cpns}`
+	if (req.files != null) {
+		if (req.files.file_cpns != null) {
+			file_cpns = req.files.file_cpns
+			const timestamp = new Date().getTime()
+			ext_cpns = path.extname(file_cpns.name)
+			fileName_cpns = file_cpns.md5 + timestamp + ext_cpns
+			url_cpns = `${req.protocol}://${req.get(
+				"host"
+			)}/files/${fileName_cpns}`
 
-		file_cpns.mv(`./public/files/${fileName_cpns}`, async (err) => {
-			if (err) return await res.status(500).json({ message: err.message })
-		})
-	}
-
-	if (file_spmt != null) {
-		const timestamp = new Date().getTime()
-		ext_spmt = path.extname(file_spmt.name)
-		fileName_spmt = file_spmt.md5 + timestamp + ext_spmt
-		url_spmt = `${req.protocol}://${req.get("host")}/files/${fileName_spmt}`
-
-		file_spmt.mv(`./public/files/${fileName_spmt}`, async (err) => {
-			if (err) return await res.status(500).json({ message: err.message })
-		})
-	}
-
-	if (file_sttp_prajabatan != null) {
-		const timestamp = new Date().getTime()
-		ext_sttp_prajabatan = path.extname(file_sttp_prajabatan.name)
-		fileName_sttp_prajabatan =
-			file_sttp_prajabatan.md5 + timestamp + ext_sttp_prajabatan
-		url_sttp_prajabatan = `${req.protocol}://${req.get(
-			"host"
-		)}/files/${fileName_sttp_prajabatan}`
-
-		file_sttp_prajabatan.mv(
-			`./public/files/${fileName_sttp_prajabatan}`,
-			async (err) => {
+			file_cpns.mv(`./public/files/${fileName_cpns}`, async (err) => {
 				if (err)
 					return await res.status(500).json({ message: err.message })
-			}
-		)
-	}
+			})
+		}
 
-	if (file_pns != null) {
-		const timestamp = new Date().getTime()
-		ext_pns = path.extname(file_pns.name)
-		fileName_pns = file_pns.md5 + timestamp + ext_pns
-		url_pns = `${req.protocol}://${req.get("host")}/files/${fileName_pns}`
+		if (req.files.file_spmt != null) {
+			file_spmt = req.files.file_spmt
+			const timestamp = new Date().getTime()
+			ext_spmt = path.extname(file_spmt.name)
+			fileName_spmt = file_spmt.md5 + timestamp + ext_spmt
+			url_spmt = `${req.protocol}://${req.get(
+				"host"
+			)}/files/${fileName_spmt}`
 
-		file_pns.mv(`./public/files/${fileName_pns}`, async (err) => {
-			if (err) return await res.status(500).json({ message: err.message })
-		})
+			file_spmt.mv(`./public/files/${fileName_spmt}`, async (err) => {
+				if (err)
+					return await res.status(500).json({ message: err.message })
+			})
+		}
+
+		if (req.files.file_sttp_prajabatan != null) {
+			file_sttp_prajabatan = req.files.file_sttp_prajabatan
+			const timestamp = new Date().getTime()
+			ext_sttp_prajabatan = path.extname(file_sttp_prajabatan.name)
+			fileName_sttp_prajabatan =
+				file_sttp_prajabatan.md5 + timestamp + ext_sttp_prajabatan
+			url_sttp_prajabatan = `${req.protocol}://${req.get(
+				"host"
+			)}/files/${fileName_sttp_prajabatan}`
+
+			file_sttp_prajabatan.mv(
+				`./public/files/${fileName_sttp_prajabatan}`,
+				async (err) => {
+					if (err)
+						return await res
+							.status(500)
+							.json({ message: err.message })
+				}
+			)
+		}
+
+		if (req.files.file_pns != null) {
+			file_pns = req.files.file_pns
+			const timestamp = new Date().getTime()
+			ext_pns = path.extname(file_pns.name)
+			fileName_pns = file_pns.md5 + timestamp + ext_pns
+			url_pns = `${req.protocol}://${req.get(
+				"host"
+			)}/files/${fileName_pns}`
+
+			file_pns.mv(`./public/files/${fileName_pns}`, async (err) => {
+				if (err)
+					return await res.status(500).json({ message: err.message })
+			})
+		}
 	}
 
 	try {

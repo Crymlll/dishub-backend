@@ -6,7 +6,7 @@ import {
 	createIjazahPegawai,
 	updateIjazahPegawai,
 	deleteIjazahPegawai,
-} from "../controllers/Pegawai/IjazahController.js"
+} from "../../controllers/Pegawai/IjazahController.js"
 
 const router = express.Router()
 
