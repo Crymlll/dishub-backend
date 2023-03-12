@@ -3,10 +3,10 @@ import db from "../../config/Database.js"
 
 const { DataTypes } = Sequelize
 
-const DiklatPegawai = db.define(
+export const DiklatPegawai = db.define(
 	"diklat_pegawai",
 	{
-		id_diklat_pegawai: {
+		id_diklat: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
@@ -30,13 +30,15 @@ const DiklatPegawai = db.define(
 		tgl_sttp: {
 			type: DataTypes.DATE,
 		},
+
+		file_diklat: {
+			type: DataTypes.STRING,
+		},
+		url_file_diklat: {
+			type: DataTypes.STRING,
+		},
 	},
 	{
 		freezeTableName: true,
 	}
 )
-
-export default DiklatPegawai
-;async () => {
-	await db.sync()
-}

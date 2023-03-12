@@ -7,6 +7,7 @@ dotenv.config()
 import PegawaiRoute from "./routes/Pegawai/PegawaiRoute.js"
 import IjazahPegawaiRoute from "./routes/Pegawai/IjazahRoute.js"
 import SpesialisasiPegawaiRoute from "./routes/Pegawai/SpesialisasiRoute.js"
+import DiklatPegawaiRoute from "./routes/Pegawai/DiklatRoute.js"
 
 import LogRequest from "./middleware/logs.js"
 import Config from "./config/Config.js"
@@ -23,6 +24,7 @@ app.use(express.static("public"))
 app.use(PegawaiRoute)
 app.use(IjazahPegawaiRoute)
 app.use(SpesialisasiPegawaiRoute)
+app.use(DiklatPegawaiRoute)
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`)
