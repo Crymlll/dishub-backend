@@ -12,6 +12,11 @@ import PrestasiPegawaiRoute from "./routes/Pegawai/PrestasiRoute.js"
 import PengalamanPegawaiRoute from "./routes/Pegawai/PengalamanRoute.js"
 
 import JabatanRoute from "./routes/Jabatan/JabatanRoute.js"
+import ABKJabatanRoute from "./routes/Jabatan/ABKRoute.js"
+import DiklatJabatanRoute from "./routes/Jabatan/DiklatRoute.js"
+import IjazahJabatanRoute from "./routes/Jabatan/IjazahRoute.js"
+import KompetensiJabatanRoute from "./routes/Jabatan/KompetensiRoute.js"
+import PengalamanJabatanRoute from "./routes/Jabatan/PengalamanRoute.js"
 
 import LogRequest from "./middleware/logs.js"
 import Config from "./config/Config.js"
@@ -33,6 +38,11 @@ app.use(PrestasiPegawaiRoute)
 app.use(PengalamanPegawaiRoute)
 
 app.use(JabatanRoute)
+app.use(ABKJabatanRoute)
+app.use(DiklatJabatanRoute)
+app.use(IjazahJabatanRoute)
+app.use(KompetensiJabatanRoute)
+app.use(PengalamanJabatanRoute)
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`)
