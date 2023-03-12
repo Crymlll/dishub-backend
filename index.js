@@ -18,6 +18,8 @@ import IjazahJabatanRoute from "./routes/Jabatan/IjazahRoute.js"
 import KompetensiJabatanRoute from "./routes/Jabatan/KompetensiRoute.js"
 import PengalamanJabatanRoute from "./routes/Jabatan/PengalamanRoute.js"
 
+import GrafikRoute from "./routes/Dashboard/GrafikRoute.js"
+
 import LogRequest from "./middleware/logs.js"
 import Config from "./config/Config.js"
 
@@ -43,6 +45,8 @@ app.use(DiklatJabatanRoute)
 app.use(IjazahJabatanRoute)
 app.use(KompetensiJabatanRoute)
 app.use(PengalamanJabatanRoute)
+
+app.use(GrafikRoute)
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`)
