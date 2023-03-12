@@ -3,10 +3,10 @@ import db from "../../config/Database.js"
 
 const { DataTypes } = Sequelize
 
-const PrestasiPegawai = db.define(
+export const PrestasiPegawai = db.define(
 	"prestasi_pegawai",
 	{
-		id_prestasi_pegawai: {
+		id_prestasi: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
@@ -27,13 +27,15 @@ const PrestasiPegawai = db.define(
 		tgl_skp: {
 			type: DataTypes.DATE,
 		},
+
+		file_prestasi: {
+			type: DataTypes.STRING,
+		},
+		url_file_prestasi: {
+			type: DataTypes.STRING,
+		},
 	},
 	{
 		freezeTableName: true,
 	}
 )
-
-export default PrestasiPegawai
-;async () => {
-	await db.sync()
-}
