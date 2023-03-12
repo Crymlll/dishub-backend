@@ -8,6 +8,7 @@ import PegawaiRoute from "./routes/Pegawai/PegawaiRoute.js"
 import IjazahPegawaiRoute from "./routes/Pegawai/IjazahRoute.js"
 import SpesialisasiPegawaiRoute from "./routes/Pegawai/SpesialisasiRoute.js"
 import DiklatPegawaiRoute from "./routes/Pegawai/DiklatRoute.js"
+import PengalamanPegawaiRoute from "./routes/Pegawai/PengalamanRoute.js"
 
 import LogRequest from "./middleware/logs.js"
 import Config from "./config/Config.js"
@@ -25,6 +26,7 @@ app.use(PegawaiRoute)
 app.use(IjazahPegawaiRoute)
 app.use(SpesialisasiPegawaiRoute)
 app.use(DiklatPegawaiRoute)
+app.use(PengalamanPegawaiRoute)
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`)
