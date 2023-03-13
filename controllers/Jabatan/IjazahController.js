@@ -31,9 +31,9 @@ export const createIjazahJabatan = async (req, res) => {
 
 	try {
 		await IjazahJabatan.create({
-			id_jabatan: data.id_jabatan,
-			tingkat: data.tingkat,
-			bidang: data.bidang,
+			id_jabatan: data.id_jabatan || "",
+			tingkat: data.tingkat || "",
+			bidang: data.bidang || "",
 		})
 		res.status(201).json({ message: "Ijazah Jabatan Created" })
 	} catch (error) {

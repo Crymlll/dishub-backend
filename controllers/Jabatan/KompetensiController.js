@@ -31,8 +31,8 @@ export const createKompetensiJabatan = async (req, res) => {
 
 	try {
 		await KompetensiJabatan.create({
-			id_jabatan: data.id_jabatan,
-			nama_kompetensi: data.nama_kompetensi,
+			id_jabatan: data.id_jabatan || "",
+			nama_kompetensi: data.nama_kompetensi || "",
 		})
 		res.status(201).json({ message: "Kompetensi Jabatan Created" })
 	} catch (error) {

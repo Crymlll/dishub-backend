@@ -31,15 +31,15 @@ export const createJabatan = async (req, res) => {
 
 	try {
 		await Jabatan.create({
-			jenis: data.jenis,
-			eselon: data.eselon,
-			bidang: data.bidang,
-			subbidang: data.subbidang,
-			nama: data.nama,
+			jenis: data.jenis || "",
+			eselon: data.eselon || "",
+			bidang: data.bidang || "",
+			subbidang: data.subbidang || "",
+			nama: data.nama || "",
 			jumlah: "",
 			pemangku: "",
 			rekomendasi: "",
-			ikhtisar: data.ikhtisar,
+			ikhtisar: data.ikhtisar || "",
 			acuan_induk: "",
 			instansi_induk_penilai: "",
 			status_pns: "",

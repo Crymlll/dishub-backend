@@ -71,10 +71,10 @@ export const createIjazahPegawai = async (req, res) => {
 	try {
 		await IjazahPegawai.create({
 			id_pegawai: data.id_pegawai,
-			tingkat_ijazah: data.tingkat_ijazah,
-			bidang_ijazah: data.bidang_ijazah,
-			no_sk_ijazah: data.no_sk_ijazah,
-			tgl_sk_ijazah: data.tgl_sk_ijazah,
+			tingkat_ijazah: data.tingkat_ijazah || "",
+			bidang_ijazah: data.bidang_ijazah || "",
+			no_sk_ijazah: data.no_sk_ijazah || "",
+			tgl_sk_ijazah: data.tgl_sk_ijazah || "",
 
 			file_ijazah: fileName_ijazah,
 			url_file_ijazah: url_ijazah,

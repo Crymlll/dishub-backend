@@ -31,8 +31,8 @@ export const createDiklatJabatan = async (req, res) => {
 
 	try {
 		await DiklatJabatan.create({
-			id_jabatan: data.id_jabatan,
-			nama_diklat: data.nama_diklat,
+			id_jabatan: data.id_jabatan || "",
+			nama_diklat: data.nama_diklat || "",
 		})
 		res.status(201).json({ message: "Diklat Jabatan Created" })
 	} catch (error) {

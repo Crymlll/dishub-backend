@@ -71,11 +71,11 @@ export const createDiklatPegawai = async (req, res) => {
 	try {
 		await DiklatPegawai.create({
 			id_pegawai: data.id_pegawai,
-			nama_diklat: data.nama_diklat,
-			tempat_diklat: data.tempat_diklat,
-			penyelenggara: data.penyelenggara,
-			no_sttp: data.no_sttp,
-			tgl_sttp: data.tgl_sttp,
+			nama_diklat: data.nama_diklat || "",
+			tempat_diklat: data.tempat_diklat || "",
+			penyelenggara: data.penyelenggara || "",
+			no_sttp: data.no_sttp || "",
+			tgl_sttp: data.tgl_sttp || "",
 
 			file_diklat: fileName_diklat,
 			url_file_diklat: url_diklat,

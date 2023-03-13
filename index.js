@@ -19,6 +19,7 @@ import KompetensiJabatanRoute from "./routes/Jabatan/KompetensiRoute.js"
 import PengalamanJabatanRoute from "./routes/Jabatan/PengalamanRoute.js"
 
 import GrafikRoute from "./routes/Dashboard/GrafikRoute.js"
+import CetakDataRoute from "./routes/Dashboard/CetakDataRoute.js"
 
 import LogRequest from "./middleware/logs.js"
 import Config from "./config/Config.js"
@@ -47,6 +48,7 @@ app.use(KompetensiJabatanRoute)
 app.use(PengalamanJabatanRoute)
 
 app.use(GrafikRoute)
+app.use(CetakDataRoute)
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`)

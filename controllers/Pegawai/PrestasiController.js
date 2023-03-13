@@ -71,10 +71,10 @@ export const createPrestasiPegawai = async (req, res) => {
 	try {
 		await PrestasiPegawai.create({
 			id_pegawai: data.id_pegawai,
-			tahun_prestasi: data.tahun_prestasi,
-			indeks_prestasi: data.indeks_prestasi,
-			nilai_prestasi: data.nilai_prestasi,
-			tgl_skp: data.tgl_skp,
+			tahun_prestasi: data.tahun_prestasi || "",
+			indeks_prestasi: data.indeks_prestasi || "",
+			nilai_prestasi: data.nilai_prestasi || "",
+			tgl_skp: data.tgl_skp || "",
 
 			file_prestasi: fileName_prestasi,
 			url_file_prestasi: url_prestasi,

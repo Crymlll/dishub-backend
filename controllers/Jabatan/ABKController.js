@@ -31,13 +31,13 @@ export const createABKJabatan = async (req, res) => {
 
 	try {
 		await ABKJabatan.create({
-			id_jabatan: data.id_jabatan,
-			uraian_tugas: data.uraian_tugas,
-			satuan_hasil: data.satuan_hasil,
-			waktu_penyelesaian: data.waktu_penyelesaian,
-			waktu_kerja_efektif: data.waktu_kerja_efektif,
-			beban_kerja: data.beban_kerja,
-			kebutuhan_pegawai: data.kebutuhan_pegawai,
+			id_jabatan: data.id_jabatan || "",
+			uraian_tugas: data.uraian_tugas || "",
+			satuan_hasil: data.satuan_hasil || "",
+			waktu_penyelesaian: data.waktu_penyelesaian || "",
+			waktu_kerja_efektif: data.waktu_kerja_efektif || "",
+			beban_kerja: data.beban_kerja || "",
+			kebutuhan_pegawai: data.kebutuhan_pegawai || "",
 		})
 		res.status(201).json({ message: "ABK Jabatan Created" })
 	} catch (error) {

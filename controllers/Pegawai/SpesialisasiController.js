@@ -78,9 +78,9 @@ export const createSpesialisasiPegawai = async (req, res) => {
 	try {
 		await SpesialisasiPegawai.create({
 			id_pegawai: data.id_pegawai,
-			bidang_spesialisasi: data.bidang_spesialisasi,
-			no_sk_spesialisasi: data.no_sk_spesialisasi,
-			tgl_sk_spesialisasi: data.tgl_sk_spesialisasi,
+			bidang_spesialisasi: data.bidang_spesialisasi || "",
+			no_sk_spesialisasi: data.no_sk_spesialisasi || "",
+			tgl_sk_spesialisasi: data.tgl_sk_spesialisasi || "",
 
 			file_spesialisasi: fileName_spesialisasi,
 			url_file_spesialisasi: url_spesialisasi,

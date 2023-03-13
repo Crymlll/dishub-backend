@@ -77,9 +77,9 @@ export const createPengalamanPegawai = async (req, res) => {
 	try {
 		await PengalamanPegawai.create({
 			id_pegawai: data.id_pegawai,
-			nama_pengalaman: data.nama_pengalaman,
-			lama_pengalaman: data.lama_pengalaman,
-			no_sk: data.no_sk,
+			nama_pengalaman: data.nama_pengalaman || "",
+			lama_pengalaman: data.lama_pengalaman || "",
+			no_sk: data.no_sk || "",
 
 			file_pengalaman: fileName_pengalaman,
 			url_file_pengalaman: url_pengalaman,

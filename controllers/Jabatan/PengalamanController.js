@@ -31,9 +31,9 @@ export const createPengalamanJabatan = async (req, res) => {
 
 	try {
 		await PengalamanJabatan.create({
-			id_jabatan: data.id_jabatan,
-			nama: data.nama,
-			lama: data.lama,
+			id_jabatan: data.id_jabatan || "",
+			nama: data.nama || "",
+			lama: data.lama || "",
 		})
 		res.status(201).json({ message: "Pengalaman Jabatan Created" })
 	} catch (error) {
