@@ -409,3 +409,15 @@ export const deletePegawai = async (req, res) => {
 		return res.status(500).json({ message: "Internal server error" })
 	}
 }
+
+export const getTablePegawai = async (req, res) => {
+	try {
+		const response = await Pegawai.findAll({
+			attributes: ["id_pegawai", "nip", "nama", "email"],
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		return res.status(404).json({ message: error.message })
+	}
+}

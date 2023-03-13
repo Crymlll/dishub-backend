@@ -134,3 +134,24 @@ export const deleteJabatan = async (req, res) => {
 		return res.status(500).json({ message: "Internal server error" })
 	}
 }
+
+export const getTableJabatan = async (req, res) => {
+	try {
+		const response = await Jabatan.findAll({
+			attributes: [
+				"id_jabatan",
+				"eselon",
+				"bidang",
+				"subbidang",
+				"nama",
+				"jumlah",
+				"pemangku",
+				"rekomendasi",
+			],
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
