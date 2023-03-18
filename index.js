@@ -10,6 +10,7 @@ import SpesialisasiPegawaiRoute from "./routes/Pegawai/SpesialisasiRoute.js"
 import DiklatPegawaiRoute from "./routes/Pegawai/DiklatRoute.js"
 import PrestasiPegawaiRoute from "./routes/Pegawai/PrestasiRoute.js"
 import PengalamanPegawaiRoute from "./routes/Pegawai/PengalamanRoute.js"
+import KompetensiPegawaiRoute from "./routes/Pegawai/KompetensiRoute.js"
 
 import JabatanRoute from "./routes/Jabatan/JabatanRoute.js"
 import ABKJabatanRoute from "./routes/Jabatan/ABKRoute.js"
@@ -39,6 +40,7 @@ app.use(SpesialisasiPegawaiRoute)
 app.use(DiklatPegawaiRoute)
 app.use(PrestasiPegawaiRoute)
 app.use(PengalamanPegawaiRoute)
+app.use(KompetensiPegawaiRoute)
 
 app.use(JabatanRoute)
 app.use(ABKJabatanRoute)

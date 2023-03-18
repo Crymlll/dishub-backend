@@ -83,8 +83,12 @@ export const createPengalamanPegawai = async (req, res) => {
 
 			file_pengalaman: fileName_pengalaman,
 			url_file_pengalaman: url_pengalaman,
+		}).then((response) => {
+			res.status(201).json({
+				message: "Pengalaman Pegawai Created",
+				id_pengalaman: response.id_pengalaman,
+			})
 		})
-		res.status(201).json({ message: "Pengalaman Pegawai Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

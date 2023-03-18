@@ -84,8 +84,12 @@ export const createSpesialisasiPegawai = async (req, res) => {
 
 			file_spesialisasi: fileName_spesialisasi,
 			url_file_spesialisasi: url_spesialisasi,
+		}).then((response) => {
+			res.status(201).json({
+				message: "Spesialisasi Pegawai Created",
+				id_spesialisasi: response.id_spesialisasi,
+			})
 		})
-		res.status(201).json({ message: "Spesialisasi Pegawai Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

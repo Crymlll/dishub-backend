@@ -79,8 +79,12 @@ export const createDiklatPegawai = async (req, res) => {
 
 			file_diklat: fileName_diklat,
 			url_file_diklat: url_diklat,
+		}).then((response) => {
+			res.status(201).json({
+				message: "Diklat Pegawai Created",
+				id_diklat: response.id_diklat,
+			})
 		})
-		res.status(201).json({ message: "Diklat Pegawai Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

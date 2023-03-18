@@ -78,8 +78,12 @@ export const createPrestasiPegawai = async (req, res) => {
 
 			file_prestasi: fileName_prestasi,
 			url_file_prestasi: url_prestasi,
+		}).then((response) => {
+			res.status(201).json({
+				message: "Prestasi Pegawai Created",
+				id_prestasi: response.id_prestasi,
+			})
 		})
-		res.status(201).json({ message: "Prestasi Pegawai Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

@@ -44,10 +44,17 @@ const Pegawai = db.define(
 		no_hp: {
 			type: DataTypes.STRING,
 		},
+		email: {
+			type: DataTypes.STRING,
+		},
+
 		nip: {
 			type: DataTypes.STRING,
 		},
-		email: {
+		file_nip: {
+			type: DataTypes.STRING,
+		},
+		url_file_nip: {
 			type: DataTypes.STRING,
 		},
 
@@ -100,6 +107,75 @@ const Pegawai = db.define(
 			type: DataTypes.STRING,
 		},
 		eselon: {
+			type: DataTypes.STRING,
+		},
+
+		no_sk_cpns: {
+			type: DataTypes.STRING,
+		},
+		tgl_sk_cpns: {
+			type: DataTypes.DATE,
+		},
+		no_spmt: {
+			type: DataTypes.STRING,
+		},
+		tmt_spmt: {
+			type: DataTypes.DATE,
+		},
+		no_sttp_prajabatan: {
+			type: DataTypes.STRING,
+		},
+		tgl_prajabatan: {
+			type: DataTypes.DATE,
+		},
+		no_sk_pns: {
+			type: DataTypes.STRING,
+		},
+		tgl_sk_pns: {
+			type: DataTypes.DATE,
+		},
+
+		//npwp
+		no_npwp: {
+			type: DataTypes.STRING,
+		},
+		file_npwp: {
+			type: DataTypes.STRING,
+		},
+		url_file_npwp: {
+			type: DataTypes.STRING,
+		},
+
+		//askes
+		no_askes: {
+			type: DataTypes.STRING,
+		},
+		file_askes: {
+			type: DataTypes.STRING,
+		},
+		url_file_askes: {
+			type: DataTypes.STRING,
+		},
+
+		//jasmani dan rohani
+		tgl_surat_sehat_jasmani: {
+			type: DataTypes.DATE,
+		},
+		file_surat_sehat_jasmani: {
+			type: DataTypes.STRING,
+		},
+		url_file_surat_sehat_jasmani: {
+			type: DataTypes.STRING,
+		},
+
+		//integritas
+		tgl_surat_integritas: {
+			type: DataTypes.DATE,
+		},
+		file_surat_integritas: {
+			type: DataTypes.STRING,
+		},
+		url_file_surat_integritas: {
 			type: DataTypes.STRING,
 		},
 	},
