@@ -155,3 +155,29 @@ export const getTableJabatan = async (req, res) => {
 		res.status(404).json({ message: error.message })
 	}
 }
+
+export const getDifferentBidang = async (req, res) => {
+	try {
+		const response = await Jabatan.findAll({
+			attributes: ["bidang"],
+			group: ["bidang"],
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getDifferentSubbidang = async (req, res) => {
+	try {
+		const response = await Jabatan.findAll({
+			attributes: ["subbidang"],
+			group: ["subbidang"],
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}

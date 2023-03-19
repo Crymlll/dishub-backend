@@ -19,10 +19,10 @@ export const PrestasiPegawai = db.define(
 			type: DataTypes.INTEGER,
 		},
 		indeks_prestasi: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 		},
 		nilai_prestasi: {
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 		},
 		tgl_skp: {
 			type: DataTypes.DATE,
