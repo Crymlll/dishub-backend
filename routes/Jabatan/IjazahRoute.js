@@ -1,6 +1,7 @@
 import express from "express"
 import {
 	getIjazahJabatan,
+	getIjazahById,
 	getIjazahJabatanById,
 	createIjazahJabatan,
 	updateIjazahJabatan,
@@ -10,7 +11,8 @@ import {
 const router = express.Router()
 
 router.get("/ijazah-jabatan", getIjazahJabatan)
-router.get("/ijazah-jabatan/:id", getIjazahJabatanById)
+router.get("/ijazah-jabatan/:id", getIjazahById)
+router.get("/ijazah-jabatan/jabatan/:id", getIjazahJabatanById)
 router.post("/ijazah-jabatan", createIjazahJabatan)
 router.patch("/ijazah-jabatan/:id", updateIjazahJabatan)
 router.delete("/ijazah-jabatan/:id", deleteIjazahJabatan)

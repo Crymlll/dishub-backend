@@ -13,6 +13,21 @@ export const getKompetensiJabatan = async (req, res) => {
 
 export const getKompetensiJabatanById = async (req, res) => {
 	try {
+		const response = await KompetensiJabatan.findAll({
+			where: {
+				id_jabatan: req.params.id,
+			},
+		})
+
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getKompetensiById = async (req, res) => {
+	try {
 		const response = await KompetensiJabatan.findOne({
 			where: {
 				id_kompetensi: req.params.id,
@@ -33,8 +48,12 @@ export const createKompetensiJabatan = async (req, res) => {
 		await KompetensiJabatan.create({
 			id_jabatan: data.id_jabatan || "",
 			nama_kompetensi: data.nama_kompetensi || "",
+		}).then((response) => {
+			res.status(201).json({
+				message: "Kompetensi Jabatan Created",
+				id_kompetensi: response.id_kompetensi,
+			})
 		})
-		res.status(201).json({ message: "Kompetensi Jabatan Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

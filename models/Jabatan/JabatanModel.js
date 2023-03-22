@@ -66,7 +66,7 @@ const Jabatan = db.define(
 			type: DataTypes.INTEGER,
 		},
 		indeks: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.STRING,
 		},
 	},
 	{

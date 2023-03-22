@@ -11,11 +11,26 @@ export const getDiklatJabatan = async (req, res) => {
 	}
 }
 
-export const getDiklatJabatanById = async (req, res) => {
+export const getDiklatById = async (req, res) => {
 	try {
 		const response = await DiklatJabatan.findOne({
 			where: {
 				id_diklat: req.params.id,
+			},
+		})
+
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getDiklatJabatanById = async (req, res) => {
+	try {
+		const response = await DiklatJabatan.findAll({
+			where: {
+				id_jabatan: req.params.id,
 			},
 		})
 
@@ -33,8 +48,12 @@ export const createDiklatJabatan = async (req, res) => {
 		await DiklatJabatan.create({
 			id_jabatan: data.id_jabatan || "",
 			nama_diklat: data.nama_diklat || "",
+		}).then((response) => {
+			res.status(201).json({
+				message: "Diklat Jabatan Created",
+				id_diklat: response.id_diklat,
+			})
 		})
-		res.status(201).json({ message: "Diklat Jabatan Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

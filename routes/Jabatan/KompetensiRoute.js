@@ -1,6 +1,7 @@
 import express from "express"
 import {
 	getKompetensiJabatan,
+	getKompetensiById,
 	getKompetensiJabatanById,
 	createKompetensiJabatan,
 	updateKompetensiJabatan,
@@ -10,7 +11,8 @@ import {
 const router = express.Router()
 
 router.get("/kompetensi-jabatan", getKompetensiJabatan)
-router.get("/kompetensi-jabatan/:id", getKompetensiJabatanById)
+router.get("/kompetensi-jabatan/:id", getKompetensiById)
+router.get("/kompetensi-jabatan/jabatan/:id", getKompetensiJabatanById)
 router.post("/kompetensi-jabatan", createKompetensiJabatan)
 router.patch("/kompetensi-jabatan/:id", updateKompetensiJabatan)
 router.delete("/kompetensi-jabatan/:id", deleteKompetensiJabatan)

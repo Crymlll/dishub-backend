@@ -26,6 +26,21 @@ export const getABKJabatanById = async (req, res) => {
 	}
 }
 
+export const getABKJabatanByJabatanId = async (req, res) => {
+	try {
+		const response = await ABKJabatan.findAll({
+			where: {
+				id_jabatan: req.params.id,
+			},
+		})
+
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
 export const createABKJabatan = async (req, res) => {
 	const data = req.body
 
@@ -38,8 +53,12 @@ export const createABKJabatan = async (req, res) => {
 			waktu_kerja_efektif: data.waktu_kerja_efektif || "",
 			beban_kerja: data.beban_kerja || "",
 			kebutuhan_pegawai: data.kebutuhan_pegawai || "",
+		}).then((response) => {
+			res.status(201).json({
+				message: "ABK Jabatan Created",
+				id_abk: response.id_abk,
+			})
 		})
-		res.status(201).json({ message: "ABK Jabatan Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

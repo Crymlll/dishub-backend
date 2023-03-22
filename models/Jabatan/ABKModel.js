@@ -15,23 +15,23 @@ export const ABKJabatan = db.define(
 			type: DataTypes.INTEGER,
 		},
 
-		uraian_jabatan: {
+		uraian_tugas: {
 			type: DataTypes.STRING,
 		},
 		satuan_hasil: {
 			type: DataTypes.STRING,
 		},
 		waktu_penyelesaian: {
-			type: DataTypes.STRING,
+			type: DataTypes.FLOAT,
 		},
 		waktu_kerja_efektif: {
-			type: DataTypes.STRING,
+			type: DataTypes.FLOAT,
 		},
 		beban_kerja: {
-			type: DataTypes.STRING,
+			type: DataTypes.FLOAT,
 		},
 		kebutuhan_pegawai: {
-			type: DataTypes.STRING,
+			type: DataTypes.FLOAT,
 		},
 	},
 	{

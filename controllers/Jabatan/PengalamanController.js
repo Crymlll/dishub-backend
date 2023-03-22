@@ -11,11 +11,26 @@ export const getPengalamanJabatan = async (req, res) => {
 	}
 }
 
-export const getPengalamanJabatanById = async (req, res) => {
+export const getPengalamanById = async (req, res) => {
 	try {
 		const response = await PengalamanJabatan.findOne({
 			where: {
 				id_pengalaman: req.params.id,
+			},
+		})
+
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getPengalamanJabatanById = async (req, res) => {
+	try {
+		const response = await PengalamanJabatan.findAll({
+			where: {
+				id_jabatan: req.params.id,
 			},
 		})
 
@@ -34,8 +49,12 @@ export const createPengalamanJabatan = async (req, res) => {
 			id_jabatan: data.id_jabatan || "",
 			nama: data.nama || "",
 			lama: data.lama || "",
+		}).then((response) => {
+			res.status(201).json({
+				message: "Pengalaman Jabatan Created",
+				id_pengalaman: response.id_pengalaman,
+			})
 		})
-		res.status(201).json({ message: "Pengalaman Jabatan Created" })
 	} catch (error) {
 		console.log(error.message)
 		res.status(400).json({ message: error.message })

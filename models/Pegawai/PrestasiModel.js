@@ -22,7 +22,7 @@ export const PrestasiPegawai = db.define(
 			type: DataTypes.STRING,
 		},
 		nilai_prestasi: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.FLOAT,
 		},
 		tgl_skp: {
 			type: DataTypes.DATE,
