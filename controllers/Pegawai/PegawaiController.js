@@ -182,6 +182,7 @@ export const createPegawai = async (req, res) => {
 
 			pangkat: data.pangkat || "",
 			golongan: data.golongan || "",
+			id_jabatan: data.id_jabatan || "",
 			jenis_jabatan: data.jenis_jabatan || "",
 			bidang: data.bidang || "",
 			nama_jabatan: data.nama_jabatan || "",
@@ -527,6 +528,7 @@ export const updatePegawai = async (req, res) => {
 				golongan: data.golongan,
 				jenis_jabatan: data.jenis_jabatan,
 				bidang: data.bidang,
+				id_jabatan: data.id_jabatan || "",
 				nama_jabatan: data.nama_jabatan,
 				eselon: data.eselon,
 

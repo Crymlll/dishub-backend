@@ -1,4 +1,5 @@
 import Jabatan from "../../models/Jabatan/JabatanModel.js"
+import Pegawai from "../../models/Pegawai/PegawaiModel.js"
 import { allowedType, maxFileSize } from "../../config/Form.js"
 import path from "path"
 
@@ -174,6 +175,21 @@ export const getDifferentSubbidang = async (req, res) => {
 		const response = await Jabatan.findAll({
 			attributes: ["subbidang"],
 			group: ["subbidang"],
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getPemangkuJabatan = async (req, res) => {
+	try {
+		const response = await Pegawai.findAll({
+			attributes: ["nama", "nip", "email"],
+			where: {
+				id_jabatan: req.params.id,
+			},
 		})
 		res.status(200).json(response)
 	} catch (error) {

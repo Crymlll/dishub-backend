@@ -103,6 +103,10 @@ const Pegawai = db.define(
 		bidang: {
 			type: DataTypes.STRING,
 		},
+
+		id_jabatan: {
+			type: DataTypes.INTEGER,
+		},
 		nama_jabatan: {
 			type: DataTypes.STRING,
 		},
