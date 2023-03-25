@@ -610,7 +610,17 @@ export const deletePegawai = async (req, res) => {
 export const getTablePegawai = async (req, res) => {
 	try {
 		const response = await Pegawai.findAll({
-			attributes: ["id_pegawai", "nip", "nama", "email"],
+			attributes: [
+				"id_pegawai",
+				"nama",
+				"nip",
+				"nama_jabatan",
+				"email",
+				"no_hp",
+				"jenis_kelamin",
+				"agama",
+				"status_kepegawaian",
+			],
 		})
 		res.status(200).json(response)
 	} catch (error) {
