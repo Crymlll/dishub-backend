@@ -71,7 +71,7 @@ export const createPrestasiPegawai = async (req, res) => {
 	try {
 		await PrestasiPegawai.create({
 			id_pegawai: data.id_pegawai,
-			tahun_prestasi: data.tahun_prestasi || "",
+			// tahun_prestasi: data.tahun_prestasi || "",
 			indeks_prestasi: data.indeks_prestasi || "",
 			nilai_prestasi: data.nilai_prestasi || "",
 			tgl_skp: data.tgl_skp || "",
@@ -130,7 +130,7 @@ export const updatePrestasiPegawai = async (req, res) => {
 	try {
 		await PrestasiPegawai.update(
 			{
-				tahun_prestasi: data.tahun_prestasi,
+				// tahun_prestasi: data.tahun_prestasi,
 				indeks_prestasi: data.indeks_prestasi,
 				nilai_prestasi: data.nilai_prestasi,
 				tgl_skp: data.tgl_skp,

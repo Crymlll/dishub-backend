@@ -1,5 +1,12 @@
 import Jabatan from "../../models/Jabatan/JabatanModel.js"
 import Pegawai from "../../models/Pegawai/PegawaiModel.js"
+
+import { ABKJabatan } from "../../models/Jabatan/ABKModel.js"
+import { DiklatJabatan } from "../../models/Jabatan/DiklatModel.js"
+import { IjazahJabatan } from "../../models/Jabatan/IjazahModel.js"
+import { KompetensiJabatan } from "../../models/Jabatan/KompetensiModel.js"
+import { PengalamanJabatan } from "../../models/Jabatan/PengalamanModel.js"
+
 import { allowedType, maxFileSize } from "../../config/Form.js"
 import path from "path"
 
@@ -190,6 +197,62 @@ export const getPemangkuJabatan = async (req, res) => {
 			where: {
 				id_jabatan: req.params.id,
 			},
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getPemetaanJabatan = async (req, res) => {
+	try {
+		const response = await Jabatan.findAll({
+			include: [
+				// {
+				// 	model: ABKJabatan,
+				// },
+				{
+					model: DiklatJabatan,
+					attributes: ["nama_diklat"],
+				},
+				{
+					model: IjazahJabatan,
+					attributes: ["tingkat", "bidang"],
+				},
+				{
+					model: KompetensiJabatan,
+					attributes: ["nama_kompetensi"],
+				},
+				{
+					model: PengalamanJabatan,
+					attributes: ["nama", "lama"],
+				},
+			],
+			where: {
+				eselon: "noneselon",
+			},
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getJabatanSummary = async (req, res) => {
+	try {
+		const response = await Jabatan.findAll({
+			attributes: [
+				"id_jabatan",
+				"eselon",
+				"bidang",
+				"subbidang",
+				"nama",
+				"jumlah",
+				"pemangku",
+				"rekomendasi",
+			],
 		})
 		res.status(200).json(response)
 	} catch (error) {

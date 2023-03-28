@@ -1,6 +1,12 @@
 import { Sequelize } from "sequelize"
 import db from "../../config/Database.js"
 
+import { DiklatPegawai } from "./DiklatModel.js"
+import { IjazahPegawai } from "./IjazahModel.js"
+import { KompetensiPegawai } from "./KompetensiModel.js"
+import { PengalamanPegawai } from "./PengalamanModel.js"
+import { PrestasiPegawai } from "./PrestasiModel.js"
+
 const { DataTypes } = Sequelize
 
 const Pegawai = db.define(
@@ -187,6 +193,41 @@ const Pegawai = db.define(
 		freezeTableName: true,
 	}
 )
+
+// Pegawai.hasMany(DiklatPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+// Pegawai.belongsTo(DiklatPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+
+// Pegawai.hasMany(IjazahPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+// Pegawai.belongsTo(IjazahPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+
+// Pegawai.hasMany(KompetensiPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+// Pegawai.belongsTo(KompetensiPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+
+// Pegawai.hasMany(PengalamanPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+// Pegawai.belongsTo(PengalamanPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+
+// Pegawai.hasMany(PrestasiPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
+// Pegawai.belongsTo(PrestasiPegawai, {
+// 	foreignKey: "id_pegawai",
+// })
 
 export default Pegawai
 ;(async () => {

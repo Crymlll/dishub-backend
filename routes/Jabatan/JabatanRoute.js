@@ -9,6 +9,8 @@ import {
 	getDifferentBidang,
 	getDifferentSubbidang,
 	getPemangkuJabatan,
+	getPemetaanJabatan,
+	getJabatanSummary,
 } from "../../controllers/Jabatan/JabatanController.js"
 
 const router = express.Router()
@@ -22,5 +24,7 @@ router.get("/table/jabatan", getTableJabatan)
 router.get("/bidang", getDifferentBidang)
 router.get("/subbidang", getDifferentSubbidang)
 router.get("/pemangku/jabatan/:id", getPemangkuJabatan)
+router.get("/pemetaan-jabatan", getPemetaanJabatan)
+router.get("/summary-jabatan", getJabatanSummary)
 
 export default router

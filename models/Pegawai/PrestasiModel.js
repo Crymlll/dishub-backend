@@ -15,9 +15,9 @@ export const PrestasiPegawai = db.define(
 			type: DataTypes.INTEGER,
 		},
 
-		tahun_prestasi: {
-			type: DataTypes.INTEGER,
-		},
+		// tahun_prestasi: {
+		// 	type: DataTypes.INTEGER,
+		// },
 		indeks_prestasi: {
 			type: DataTypes.STRING,
 		},

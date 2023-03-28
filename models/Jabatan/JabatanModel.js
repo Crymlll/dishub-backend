@@ -1,5 +1,10 @@
 import { Sequelize } from "sequelize"
 import db from "../../config/Database.js"
+import { ABKJabatan } from "./ABKModel.js"
+import { IjazahJabatan } from "./IjazahModel.js"
+import { DiklatJabatan } from "./DiklatModel.js"
+import { KompetensiJabatan } from "./KompetensiModel.js"
+import { PengalamanJabatan } from "./PengalamanModel.js"
 
 const { DataTypes } = Sequelize
 
@@ -66,13 +71,48 @@ const Jabatan = db.define(
 			type: DataTypes.INTEGER,
 		},
 		indeks: {
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 		},
 	},
 	{
 		freezeTableName: true,
 	}
 )
+
+Jabatan.hasMany(ABKJabatan, {
+	foreignKey: "id_jabatan",
+})
+Jabatan.belongsTo(ABKJabatan, {
+	foreignKey: "id_jabatan",
+})
+
+Jabatan.hasMany(IjazahJabatan, {
+	foreignKey: "id_jabatan",
+})
+Jabatan.belongsTo(IjazahJabatan, {
+	foreignKey: "id_jabatan",
+})
+
+Jabatan.hasMany(DiklatJabatan, {
+	foreignKey: "id_jabatan",
+})
+Jabatan.belongsTo(DiklatJabatan, {
+	foreignKey: "id_jabatan",
+})
+
+Jabatan.hasMany(KompetensiJabatan, {
+	foreignKey: "id_jabatan",
+})
+Jabatan.belongsTo(KompetensiJabatan, {
+	foreignKey: "id_jabatan",
+})
+
+Jabatan.hasMany(PengalamanJabatan, {
+	foreignKey: "id_jabatan",
+})
+Jabatan.belongsTo(PengalamanJabatan, {
+	foreignKey: "id_jabatan",
+})
 
 export default Jabatan
 ;(async () => {

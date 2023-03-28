@@ -1,4 +1,10 @@
 import Pegawai from "../../models/Pegawai/PegawaiModel.js"
+import { DiklatPegawai } from "../../models/Pegawai/DiklatModel.js"
+import { IjazahPegawai } from "../../models/Pegawai/IjazahModel.js"
+import { KompetensiPegawai } from "../../models/Pegawai/KompetensiModel.js"
+import { PengalamanPegawai } from "../../models/Pegawai/PengalamanModel.js"
+import { PrestasiPegawai } from "../../models/Pegawai/PrestasiModel.js"
+
 import { allowedType, maxFileSize } from "../../config/Form.js"
 import path from "path"
 import fs from "fs"
@@ -628,3 +634,31 @@ export const getTablePegawai = async (req, res) => {
 		return res.status(404).json({ message: error.message })
 	}
 }
+
+// export const getPemetaanPegawai = async (req, res) => {
+// 	try {
+// 		const response = await Pegawai.findAll({
+// 			include: [
+// 				{
+// 					model: DiklatPegawai,
+// 				},
+// 				{
+// 					model: IjazahPegawai,
+// 				},
+// 				{
+// 					model: KompetensiPegawai,
+// 				},
+// 				{
+// 					model: PengalamanPegawai,
+// 				},
+// 				{
+// 					model: PrestasiPegawai,
+// 				},
+// 			],
+// 		})
+// 		res.status(200).json(response)
+// 	} catch (error) {
+// 		console.log(error.message)
+// 		res.status(404).json({ message: error.message })
+// 	}
+// }
