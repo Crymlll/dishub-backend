@@ -100,6 +100,9 @@ const Pegawai = db.define(
 		pangkat: {
 			type: DataTypes.STRING,
 		},
+		tahun_pangkat: {
+			type: DataTypes.DATE,
+		},
 		golongan: {
 			type: DataTypes.STRING,
 		},

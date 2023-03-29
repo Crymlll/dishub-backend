@@ -187,6 +187,7 @@ export const createPegawai = async (req, res) => {
 			url_file_nip: url_nip || "http://localhost:5000/template/file.png",
 
 			pangkat: data.pangkat || "",
+			tahun_pangkat: data.tahun_pangkat || "",
 			golongan: data.golongan || "",
 			id_jabatan: data.id_jabatan || "",
 			jenis_jabatan: data.jenis_jabatan || "",
@@ -531,6 +532,7 @@ export const updatePegawai = async (req, res) => {
 				url_file_nip: url_nip,
 
 				pangkat: data.pangkat,
+				tahun_pangkat: data.tahun_pangkat,
 				golongan: data.golongan,
 				jenis_jabatan: data.jenis_jabatan,
 				bidang: data.bidang,
