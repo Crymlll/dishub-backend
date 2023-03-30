@@ -31,6 +31,9 @@ const Jabatan = db.define(
 		nama: {
 			type: DataTypes.STRING,
 		},
+		status_jabatan: {
+			type: DataTypes.STRING,
+		},
 		jumlah: {
 			type: DataTypes.INTEGER,
 		},

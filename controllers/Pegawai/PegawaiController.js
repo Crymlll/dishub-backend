@@ -10,6 +10,8 @@ import path from "path"
 import fs from "fs"
 import { time } from "console"
 
+import { Op } from "sequelize"
+
 export const getPegawai = async (req, res) => {
 	try {
 		const response = await Pegawai.findAll()
@@ -629,6 +631,9 @@ export const getTablePegawai = async (req, res) => {
 				"agama",
 				"status_kepegawaian",
 			],
+			where: {
+				[Op.not]: [{ status_kepegawaian: "tidak" }],
+			},
 		})
 		res.status(200).json(response)
 	} catch (error) {
@@ -664,3 +669,17 @@ export const getTablePegawai = async (req, res) => {
 // 		res.status(404).json({ message: error.message })
 // 	}
 // }
+
+export const getPegawaiAktif = async (req, res) => {
+	try {
+		const response = await Pegawai.findAll({
+			where: {
+				[Op.not]: [{ status_kepegawaian: "tidak" }],
+			},
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}

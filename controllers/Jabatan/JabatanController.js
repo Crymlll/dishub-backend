@@ -44,6 +44,7 @@ export const createJabatan = async (req, res) => {
 			bidang: data.bidang || "",
 			subbidang: data.subbidang || "",
 			nama: data.nama || "",
+			status_jabatan: "aktif",
 			jumlah: "",
 			pemangku: "",
 			rekomendasi: "",
@@ -90,6 +91,7 @@ export const updateJabatan = async (req, res) => {
 				bidang: data.bidang,
 				subbidang: data.subbidang,
 				nama: data.nama,
+				status_jabatan: data.status_jabatan,
 				jumlah: data.jumlah,
 				pemangku: data.pemangku,
 				rekomendasi: data.rekomendasi,
@@ -156,6 +158,9 @@ export const getTableJabatan = async (req, res) => {
 				"pemangku",
 				"rekomendasi",
 			],
+			where: {
+				status_jabatan: "aktif",
+			},
 		})
 		res.status(200).json(response)
 	} catch (error) {
@@ -253,6 +258,20 @@ export const getJabatanSummary = async (req, res) => {
 				"pemangku",
 				"rekomendasi",
 			],
+		})
+		res.status(200).json(response)
+	} catch (error) {
+		console.log(error.message)
+		res.status(404).json({ message: error.message })
+	}
+}
+
+export const getJabatanAktif = async (req, res) => {
+	try {
+		const response = await Jabatan.findAll({
+			where: {
+				status_jabatan: "aktif",
+			},
 		})
 		res.status(200).json(response)
 	} catch (error) {

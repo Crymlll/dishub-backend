@@ -7,6 +7,7 @@ import {
 	deletePegawai,
 	getTablePegawai,
 	// getPemetaanPegawai,
+	getPegawaiAktif,
 } from "../../controllers/Pegawai/PegawaiController.js"
 
 const router = express.Router()
@@ -17,6 +18,7 @@ router.post("/pegawai", createPegawai)
 router.patch("/pegawai/:id", updatePegawai)
 router.delete("/pegawai/:id", deletePegawai)
 router.get("/table/pegawai", getTablePegawai)
+router.get("/aktif/pegawai", getPegawaiAktif)
 // router.get("pemetaan-pegawai", getPemetaanPegawai)
 
 export default router
