@@ -214,9 +214,11 @@ export const createPegawai = async (req, res) => {
 			file_surat_integritas: "file.png",
 			url_file_surat_integritas:
 				"http://localhost:5000/template/file.png",
-		})
-		res.status(201).json({
-			message: "Pegawai created",
+		}).then((response) => {
+			res.status(201).json({
+				message: "Pegawai created successfully",
+				id_pegawai: response.id_pegawai,
+			})
 		})
 	} catch (error) {
 		console.log(error.message)

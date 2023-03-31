@@ -10,6 +10,8 @@ import { PengalamanJabatan } from "../../models/Jabatan/PengalamanModel.js"
 import { allowedType, maxFileSize } from "../../config/Form.js"
 import path from "path"
 
+import Sequelize, { Op } from "sequelize"
+
 export const getJabatan = async (req, res) => {
 	try {
 		const response = await Jabatan.findAll()
@@ -59,9 +61,11 @@ export const createJabatan = async (req, res) => {
 			jasmani: "",
 			tahun_terakhir: "",
 			indeks: "",
-		})
-		res.status(201).json({
-			message: "Jabatan created",
+		}).then((response) => {
+			res.status(201).json({
+				message: "Jabatan created",
+				id_jabatan: response.id_jabatan,
+			})
 		})
 	} catch (error) {
 		console.log(error.message)
@@ -172,8 +176,15 @@ export const getTableJabatan = async (req, res) => {
 export const getDifferentBidang = async (req, res) => {
 	try {
 		const response = await Jabatan.findAll({
-			attributes: ["bidang"],
+			attributes: [
+				"bidang",
+				[Sequelize.fn("COUNT", Sequelize.col("bidang")), "jumlah"],
+			],
+
 			group: ["bidang"],
+			where: {
+				[Op.not]: [{ bidang: "" }],
+			},
 		})
 		res.status(200).json(response)
 	} catch (error) {
