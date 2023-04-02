@@ -540,7 +540,7 @@ export const updatePegawai = async (req, res) => {
 				golongan: data.golongan,
 				jenis_jabatan: data.jenis_jabatan,
 				bidang: data.bidang,
-				id_jabatan: data.id_jabatan || "",
+				id_jabatan: data.id_jabatan,
 				nama_jabatan: data.nama_jabatan,
 				eselon: data.eselon,
 
